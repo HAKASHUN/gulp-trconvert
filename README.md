@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/HAKASHUN/gulp-trconvert.svg?branch=master)](https://travis-ci.org/HAKASHUN/gulp-trconvert)
 
-> trconvert plugin for [gulp](https://github.com/wearefractal/gulp)
+> [trconvert](https://github.com/atsumo/trconvert) plugin for [gulp](https://github.com/wearefractal/gulp)
 
 ## Usage
 
