@@ -1,5 +1,7 @@
 # gulp-trconvert
 
+[![Build Status](https://travis-ci.org/HAKASHUN/gulp-trconvert.svg?branch=master)](https://travis-ci.org/HAKASHUN/gulp-trconvert)
+
 > trconvert plugin for [gulp](https://github.com/wearefractal/gulp)
 
 ## Usage
