@@ -1,49 +1,48 @@
 var through = require("through2"),
-	gutil = require("gulp-util");
+  gutil = require("gulp-util"),
+  Converter = require("trconvert");
 
 module.exports = function (param) {
-	"use strict";
+  "use strict";
 
-	// if necessary check for required param(s), e.g. options hash, etc.
-	if (!param) {
-		throw new gutil.PluginError("gulp-trconvert", "No param supplied");
-	}
+  param = param || {};
+  param.ratio = param.ratio || 1;
+  param.base = param.base || 2;
 
-	// see "Writing a plugin"
-	// https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/README.md
-	function trconvert(file, enc, callback) {
-		/*jshint validthis:true*/
+  // see "Writing a plugin"
+  // https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/README.md
+  function trconvert(file, enc, callback) {
+    /*jshint validthis:true*/
 
-		// Do nothing if no contents
-		if (file.isNull()) {
-			this.push(file);
-			return callback();
-		}
+    // Do nothing if no contents
+    if (file.isNull()) {
+      this.push(file);
+      return callback();
+    }
 
-		if (file.isStream()) {
+    if (file.isStream()) {
 
-			// http://nodejs.org/api/stream.html
-			// http://nodejs.org/api/child_process.html
-			// https://github.com/dominictarr/event-stream
+      // http://nodejs.org/api/stream.html
+      // http://nodejs.org/api/child_process.html
+      // https://github.com/dominictarr/event-stream
 
-			// accepting streams is optional
-			this.emit("error",
-				new gutil.PluginError("gulp-trconvert", "Stream content is not supported"));
-			return callback();
-		}
+      // accepting streams is optional
+      this.emit("error",
+        new gutil.PluginError("gulp-trconvert", "Stream content is not supported"));
+      return callback();
+    }
 
-		// check if file.contents is a `Buffer`
-		if (file.isBuffer()) {
+    // check if file.contents is a `Buffer`
+    if (file.isBuffer()) {
 
-			// manipulate buffer in some way
-			// http://nodejs.org/api/buffer.html
-			file.contents = new Buffer(String(file.contents) + "\n" + param);
+      var converted = new Converter(file.path, param.ratio, param.base).convert();
+      file.contents = new Buffer(converted);
 
-			this.push(file);
+      this.push(file);
 
-		}
-		return callback();
-	}
+    }
+    return callback();
+  }
 
-	return through.obj(trconvert);
+  return through.obj(trconvert);
 };

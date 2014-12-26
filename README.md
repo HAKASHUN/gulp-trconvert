@@ -1,7 +1,4 @@
-(PLUGIN AUTHOR: Please read [Plugin README conventions](https://github.com/wearefractal/gulp/wiki/Plugin-README-Conventions), then delete this line)
-
 # gulp-trconvert
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]  [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][depstat-image]][depstat-url]
 
 > trconvert plugin for [gulp](https://github.com/wearefractal/gulp)
 
@@ -20,7 +17,8 @@ var trconvert = require("gulp-trconvert");
 
 gulp.src("./src/*.ext")
 	.pipe(trconvert({
-		msg: "Hello Gulp!"
+	  ratio: 1,
+	  base: 2
 	}))
 	.pipe(gulp.dest("./dist"));
 ```
@@ -29,12 +27,17 @@ gulp.src("./src/*.ext")
 
 ### trconvert(options)
 
-#### options.msg
-Type: `String`  
-Default: `Hello World`
+#### options.ratio
+Type: `Number`  
+Default: 1
 
-The message you wish to attach to file.
+convert ratio. path caluculated by this rate. ( default 1 )
 
+#### options.base
+Type: `Number`  
+Default: 2
+
+convert base ratio (default ratio 2)
 
 ## License
 
@@ -45,9 +48,3 @@ The message you wish to attach to file.
 
 [travis-url]: http://travis-ci.org/HAKASHUN/gulp-trconvert
 [travis-image]: https://secure.travis-ci.org/HAKASHUN/gulp-trconvert.png?branch=master
-
-[coveralls-url]: https://coveralls.io/r/HAKASHUN/gulp-trconvert
-[coveralls-image]: https://coveralls.io/repos/HAKASHUN/gulp-trconvert/badge.png
-
-[depstat-url]: https://david-dm.org/HAKASHUN/gulp-trconvert
-[depstat-image]: https://david-dm.org/HAKASHUN/gulp-trconvert.png

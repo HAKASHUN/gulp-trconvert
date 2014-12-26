@@ -1,7 +1,7 @@
 
 {
   "name": "gulp-trconvert",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A plugin for Gulp",
   "keywords": [
     "gulpplugin"
@@ -13,11 +13,11 @@
   },
   "repository": "HAKASHUN/gulp-trconvert",
   "scripts": {
-    "test": "istanbul test _mocha --report html -- test/*.js --reporter spec",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "istanbul test _mocha --report html -- test/*.js --reporter spec"
   },
   "dependencies": {
     "through2": "*",
+    "trconvert": "git://github.com/HAKASHUN/trconvert.git",
     "gulp-util": "~2.2.0"
   },
   "devDependencies": {
