@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "through2": "*",
-    "trconvert": "git://github.com/HAKASHUN/trconvert.git",
+    "trconvert": "*",
     "gulp-util": "~2.2.0"
   },
   "devDependencies": {
